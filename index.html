@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>E-Juku - Pesan Hasil Laut Online</title>
+<link rel="icon" href="logoejuku.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header" style="display:none">
+  <div class="header-inner">
+    <img src="logoejuku.png" alt="E-Juku" class="logo" onerror="this.style.display='none'">
+    <div class="brand">
+      <h1>E-Juku</h1>
+      <small>Dari Laut ke Meja</small>
+    </div>
+    <button class="icon-btn" id="btnCartTop" title="Keranjang">
+      🛒 <span class="badge" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ VIEW: AUTH ============ -->
+<section id="view-auth" class="view active">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <img src="logoejuku.png" alt="E-Juku" class="auth-logo" onerror="this.style.display='none'">
+      <h2>Selamat Datang di <span class="text-merah">E-Juku</span></h2>
+      <p class="muted">Platform Pesan Online Hasil Laut</p>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Masuk</button>
+        <button class="tab" data-tab="register">Daftar</button>
+      </div>
+
+      <!-- Login -->
+      <form id="formLogin" class="form">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="admin@ejuku.id" required>
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="admin123" required>
+        <button type="submit" class="btn btn-primary">Masuk</button>
+        <p class="muted small">Demo: <b>admin@ejuku.id</b> / <b>admin123</b></p>
+      </form>
+
+      <!-- Register -->
+      <form id="formRegister" class="form" style="display:none">
+        <label>Nama Lengkap</label>
+        <input type="text" id="regName" placeholder="Nama Anda" required>
+        <label>Email</label>
+        <input type="email" id="regEmail" placeholder="email@example.com" required>
+        <label>Password</label>
+        <input type="password" id="regPassword" placeholder="Min. 6 karakter" required>
+        <label>No. HP</label>
+        <input type="tel" id="regPhone" placeholder="08xxxxxxxxxx">
+        <label>Alamat</label>
+        <textarea id="regAddress" rows="2" placeholder="Alamat lengkap"></textarea>
+        <button type="submit" class="btn btn-primary">Daftar Sekarang</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIEW: HOME ============ -->
+<section id="view-home" class="view">
+  <div class="hero">
+    <h2>🐟 Hasil Laut Segar</h2>
+    <p>Dikirim cepat dengan rantai dingin</p>
+    <input type="search" id="searchInput" class="search" placeholder="🔍 Cari ikan, udang, cumi...">
+  </div>
+
+  <div class="categories" id="categories"></div>
+
+  <div class="section-title">
+    <h3>Produk Segar</h3>
+  </div>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<!-- ============ VIEW: CART ============ -->
+<section id="view-cart" class="view">
+  <div class="page-head"><h2>🛒 Keranjang</h2></div>
+  <div id="cartList"></div>
+  <div id="cartSummary" class="cart-summary"></div>
+</section>
+
+<!-- ============ VIEW: ORDERS ============ -->
+<section id="view-orders" class="view">
+  <div class="page-head"><h2>📦 Pesanan Saya</h2></div>
+  <div id="ordersList"></div>
+</section>
+
+<!-- ============ VIEW: PROFILE ============ -->
+<section id="view-profile" class="view">
+  <div class="page-head"><h2>👤 Akun Saya</h2></div>
+  <div class="profile-card" id="profileCard"></div>
+  <button class="btn btn-outline" id="btnLogout">Keluar</button>
+  <p class="muted center small" style="margin-top:24px">E-Juku v1.0 · Merah Putih 🇮🇩</p>
+</section>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav" id="bottomNav" style="display:none">
+  <button data-view="home" class="active">🏠<span>Beranda</span></button>
+  <button data-view="cart">🛒<span>Keranjang</span></button>
+  <button data-view="orders">📦<span>Pesanan</span></button>
+  <button data-view="profile">👤<span>Akun</span></button>
+</nav>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<!-- MODAL CHECKOUT -->
+<div id="modalCheckout" class="modal">
+  <div class="modal-card">
+    <h3>Konfirmasi Pesanan</h3>
+    <label>Alamat Pengiriman</label>
+    <textarea id="coAddress" rows="2" placeholder="Alamat lengkap"></textarea>
+    <label>Metode Pembayaran</label>
+    <select id="coPayment">
+      <option>QRIS</option>
+      <option>E-Wallet (OVO/GoPay/Dana)</option>
+      <option>Transfer Bank</option>
+      <option>COD (Bayar di Tempat)</option>
+    </select>
+    <label>Catatan (opsional)</label>
+    <input id="coNote" placeholder="Contoh: Ikan dibersihkan">
+    <div class="modal-actions">
+      <button class="btn btn-outline" id="coCancel">Batal</button>
+      <button class="btn btn-primary" id="coConfirm">Pesan Sekarang</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
